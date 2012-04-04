@@ -1,0 +1,183 @@
+"must be called before filetype plugin on ident on
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+
+set number
+set hidden
+set ts=4 sts=4 sw=4 noexpandtab
+
+"set t_Co=256
+colorscheme blackboard
+
+filetype plugin on 
+filetype indent on
+
+  
+" Use the same symbols as TextMate for tabstops and EOLs
+set listchars=tab:▸\ ,eol:¬
+
+"Invisible character colors
+highlight NonText guifg=#4a4a59
+highlight SpecialKey guifg=#4a4a59
+
+command! -nargs=* Stab call Stab()
+
+function! Stab()
+	let l:tabstop = 1 * input('set tabstop = softtabstop = shiftwidth = ')
+	if l:tabstop > 0
+		let &l:sts = l:tabstop
+		let &l:ts = l:tabstop
+		let &l:sw = l:tabstop
+	endif
+	call SummarizeTabs()
+endfunction
+						  
+function! SummarizeTabs()
+	try
+		echohl ModeMsg
+		echon 'tabstop='.&l:ts
+		echon ' shiftwidth='.&l:sw
+		echon ' softtabstop='.&l:sts
+		if &l:et
+			echon ' expandtab'
+		else
+			echon ' noexpandtab'
+		endif
+	finally
+		echohl None
+	endtry
+endfunction
+
+if has("autocmd")
+	" Enable file type detection
+	filetype on
+
+	" Syntax of these languages is fussy over tabs Vs spaces
+	autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+	autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+	" Customisations based on house-style (arbitrary)
+	autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
+	autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
+	autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
+	autocmd FileType java setlocal ts=4 sts=4 sw=4 noexpandtab
+
+	" Treat .rss files as XML
+	autocmd BufNewFile,BufRead *.rss setfiletype xml
+endif
+
+
+function! <SID>StripTrailingWhitespaces()
+	" Preparation: save last search, and cursor position.
+	let _s=@/
+	let l = line(".")
+	let c = col(".")
+	" Do the business:
+	%s/\s\+$//e
+	" Clean up: restore previous search history, and cursor position
+	let @/=_s
+	call cursor(l, c)
+endfunction
+
+" clean trailing whitespaces on save
+autocmd BufWritePre *.py,*.js,*.java :call <SID>StripTrailingWhitespaces()
+
+nmap <a-[> <<
+nmap <a-]> >>
+vmap <a-[> <gv
+vmap <a-]> >gv
+
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+map <c-tab> :tabnext<cr>
+imap <c-tab> <esc>:tabnext<cr>i
+map <c-s-tab> :tabprevious<cr>
+imap <c-s-tab> <esc>:tabprevious<cr>i
+map <c-t> :tabnew<cr>
+imap <c-t> <esc>:tabnew<cr>i
+
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+map <leader>ew :e %%
+map <leader>es :sp %%
+map <leader>ev :vsp %%
+map <leader>et :tabe %%
+
+" Shortcut to rapidly toggle `set list`
+nmap <leader>l :set list!<CR>
+
+
+
+" Java
+" http://everything101.sourceforge.net/docs/papers/java_and_vim.html
+
+" intra-file navigation
+
+""""""""""""""""""""""""""""""""""""""""""""
+"  Code Folding base on indentation        "
+""""""""""""""""""""""""""""""""""""""""""""
+set foldmethod=indent
+set foldlevel=1
+set foldnestmax=2
+set fillchars=stl:_,stlnc:-,vert:\|,fold:\ ,diff:-
+map F :let &fen = !&fen<CR>
+
+
+" inter-file navigation
+"
+""""""""""""""""""""""""""""""""""""""""""""
+"  set gf (go to file) and gc (go to class)"
+""""""""""""""""""""""""""""""""""""""""""""
+set path+=.,
+set path+=/home/hendrix/workspace/WASX/eclipse/grid.pgc.common/src/**,
+set path+=/home/hendrix/workspace/WASX/eclipse/grid.pgc.runtime/src/**,
+set path+=/home/hendrix/workspace/WASX/eclipse/grid.pgc.samples/src/**,
+set path+=/home/hendrix/workspace/WASX/eclipse/grid.pgc.was/src/**,
+
+autocmd BufRead *.java set include=^#\s*import 
+autocmd BufRead *.java set includeexpr=substitute(v:fname,'\\.','/','g')
+
+map gf <C-W>f
+map gc gdb<C-W>f
+
+
+""""""""""""""""""""""""""""""""""""""""""""
+"  tag jump support                        "
+""""""""""""""""""""""""""""""""""""""""""""
+" create tags file
+" first unzip $JAVA_HOME/src.zip into $JAVA_HOME/share then, run
+" ctags -R --language-force=java -f ~/.tags $JAVA_HOME/share
+autocmd FileType java set tags=~/.java-ctags
+" map key to open on split window
+map <C-]> <C-W><C-]>
+
+""""""""""""""""""""""""""""""""""""""""""""
+"  code complettion support                        "
+""""""""""""""""""""""""""""""""""""""""""""
+set complete=i,],.,b,w,t,k
+set dictionary=~/.vimKeywords
+
+function! My_TabComplete()
+	let substr = strpart(getline('.'), col('.'))
+	let result = match(substr, '\w\+\(\.\w*\)$')
+	if (result!=-1)
+		return "\<C-X>\<C-U>"
+	else
+		return "\<tab>"
+endfunction
+
+autocmd FileType java inoremap <tab> <C-R>=My_TabComplete()<CR>
+				  
+""""""""""""""""""""""""""""""""""""""""""""
+"  compiling source code                   "
+""""""""""""""""""""""""""""""""""""""""""""
+
+" Java
+au FileType java set makeprg=mvn\ clean\ package\ %
+au FileType java set efm=\ %#[javac]\ %#%f:%l:%c:%*\\d:%*\\d:\ %t%[%^:]%#:%m,\%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%#
+" special settings for WASX code
+au BufRead,BufNewFile **/WASX/**.java set makeprg=mantis\ -lib\ \"/opt/IBM/WebSphere8.5yy/AppServer/plugins/com.ibm.ws.batch.runtime.jar\"
+
+noremap <F5> :make<CR>

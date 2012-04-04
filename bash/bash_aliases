@@ -1,0 +1,188 @@
+#==========#
+# ALIASES  #
+#==========#
+
+alias up='sudo pkill synaptic; pkill software-center;sudo rm /usr/bin/python && sudo ln -s /usr/bin/python2.7 /usr/bin/python;sudo apt-get update && sudo apt-get install $@;sudo rm /usr/bin/python && sudo ln -s /etc/alternatives/python /usr/bin/python'
+alias upg='sudo pkill synaptic; pkill software-center;sudo rm /usr/bin/python && sudo ln -s /usr/bin/python2.7 /usr/bin/python; sudo apt-get update && sudo apt-get upgrade;sudo rm /usr/bin/python && sudo ln -s /etc/alternatives/python /usr/bin/python'
+alias upins='sudo pkill synaptic; pkill software-center; sudo apt-get update && sudo apt-get install'
+alias ins='sudo pkill synaptic; pkill software-center; sudo apt-get install'
+alias reins='sudo pkill synaptic; pkill software-center; sudo apt-get install --reinstall'
+alias uins='sudo pkill synaptic; pkill software-center; sudo apt-get remove'
+alias puins='sudo pkill synaptic; pkill software-center; sudo apt-get remove --purge'
+alias autoremove='sudo pkill synaptic; pkill software-center; sudo apt-get autoremove'
+alias deball='sudo pkill synaptic; pkill software-center; sudo dpkg -i *.deb'
+alias clean='sudo pkill synaptic; pkill software-center; sudo apt-get autoclean; sudo apt-get clean'
+alias levelup='sudo pkill synaptic; pkill software-center; sudo apt-get update && sudo apt-get dist-upgrade'
+alias ss='apt-cache search'					#Search package | Requires Apt
+alias infm='apt-cache show'					#Show package detailed info
+alias ver='apt-cache policy'					#Show All Versions
+alias whereare='dpkg -L $1'					#Find where the all package is installed, similar to whereis
+alias ins?='dpkg -l $1'						#Check if the package is installed
+alias ppapurge='sudo ppa-purge'					#Revert to older package version | requires ppa-purge
+alias ppaadd='sudo add-apt-repository'				#Add repos from launchpad Ex: ppa:banshee-team/ppa
+alias ppadel='sudo add-apt-repository -r'			#Removes repos from launchpad Ex: ppa:banshee-team/ppa
+alias keystone='sudo apt-key add '				#Add block of gpg keys manually
+
+alias brcup='source ~/.bashrc'					#Reload bashrc without closing terminal
+alias brc='xdg-open ~/.bashrc &'				#Edit Bashrc file
+alias src='sudo xdg-open /etc/apt/sources.list'			#Edit Sourcelist for PPAs
+
+alias hhg='history | grep'					#Search History for keywords
+alias hhl='history'						#View History
+alias javaset='sudo update-alternatives --config java'		#Set a java alternative
+alias ooo='xdg-open'						#Open any file
+
+alias mydistro='lsb_release -a && uname -a'			#Show distro version
+
+#Update System DB
+alias updatedb='sudo updatedb -v'
+
+##Directory##
+alias cachedir='cd /var/cache/apt/archives'
+
+##Changing Directory##
+alias cdb='cd $OLDPWD'						#Go back to the previous Dir
+alias cd..='cd ..' 
+alias cd...='cd ../..' 
+alias cd....='cd ../../..' 
+alias ..='cd ..' 
+alias ...='cd ../..' 
+alias ....='cd ../../..'``
+
+#Display facts of the day
+alias today='grep -h -d skip `date +%m/%d` /usr/share/calendar/*'
+
+#Auto Get Missing PPA LaunchPad GPG Keys
+alias autokey='sudo apt-get update 2> /tmp/keymissing; for key in $(grep "NO_PUBKEY" /tmp/keymissing |sed "s/.*NO_PUBKEY //"); do echo -e "\nProcessing key: $key"; gpg --keyserver pool.sks-keyservers.net --recv $key && gpg --export --armor $key | sudo apt-key add -; done'
+
+# enable color support of ls and also add handy aliases
+#if [ -x /usr/bin/dircolors ]; then
+#    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+#    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+#    alias grep='grep --color=auto'
+#    alias fgrep='fgrep --color=auto'
+#    alias egrep='egrep --color=auto'
+#fi
+
+#Enable Colors when using ls command
+if [ "$TERM" != "dumb" ]; then
+    eval `dircolors -b`
+    alias ls='ls --color=always'
+    alias dir='ls --color=auto --format=vertical'
+    alias vdir='ls --color=auto --format=long'
+fi
+
+#Listings
+alias lsg='ls -la | grep'					#requires an argument
+alias lst='ls -latr'						#sort by date
+alias lsa='ls -la $1 | less'
+alias ls.="ls | sed -e 's/\.[a-zA-Z]*$//'"
+alias lss='ls --color=auto'
+alias lls='ls -l -h -g -F --color=auto'
+alias lc='ls -aCF'
+alias lr='ls -lR'                 # recursive
+alias lsx='ls -ax'                # sort right to left rather then in columns
+alias lss='ls -shaxSr'            # sort by size
+alias lm='ls -al |more'           # pipe through 'more'
+alias lsl='ls -l'
+alias lsa='ls -a'
+alias less='less -SR'
+alias lll='ls -lLBhX --time-style=locale'
+alias ll='ls -lX'
+alias lx='ls -lXB' #sort by ext
+alias lk='ls -lSr' #soft by size
+alias rdir='ls -aFlhRX | less'
+alias ll="ls -lh"
+alias dir='ls --color -Flh' 
+alias dirh='ls --color -Flah' 
+alias lsh='ls -lah'						#human readable (sizes) long and all ;-)
+
+#shutdown
+alias shutdownnow="shutdown now -P"
+
+#Network Interfaces
+alias network="sudo nano /etc/network/interfaces"
+
+#Restart Network
+alias netstart="sudo /etc/init.d/networking restart"
+
+#Restartx
+alias restartx="sudo service gdm start"
+
+
+# A few ubuntu related aliases
+alias mountiso='mount -t iso9660 $1 /media/iso -o loop'
+alias comprep='compiz --replace --only-current-screen &'
+
+# editing
+alias hostedit='sudo xdg-open /etc/hosts'
+alias fstabedit='sudo xdg-open /etc/fstab'
+alias crontabedit='sudo env EDITOR=xdg-open crontab -e'
+
+# Some more alias to avoid making mistakes:
+#alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+alias f="find . |grep "
+alias p='ps auxf'
+alias pg='ps aux | grep' #requires an argument
+
+alias clr='printf "\33[2J"'				#Clear screen, keep prompt at eye level
+
+alias myip='echo Current IP Address: $(curl -s http://checkip.dyndns.org/ | grep -o "[[:digit:].]\+")'
+
+#Compression (cd into dir, will compress every single folder)
+alias tardir='for i in *; do if [ -d "$i" ]; then tar czf "$i".tar.gz  "$i"; fi; done'
+
+# network
+alias net1='watch --interval=2 "sudo netstat -apn -l -A inet"'
+alias net2='watch --interval=2 "sudo netstat -anp --inet --inet6"'  
+alias net3='sudo lsof -i'
+alias net4='watch --interval=2 "sudo netstat -p -e --inet --numeric-hosts"'
+alias net5='watch --interval=2 "sudo netstat -tulpan"'
+alias net6='sudo netstat -tulpan'
+alias net7='watch --interval=2 "sudo netstat -utapen"'
+alias net8='watch --interval=2 "sudo netstat -ano -l -A inet"'
+alias netl='sudo nmap -sT -O localhost'
+alias ping='ping -c 10'
+alias whois='whois -H'
+
+
+# Alias's to modifed commands
+
+alias df='df -hT'
+alias ping='ping -c 10'
+alias ipconfig='ifconfig -a'
+
+alias mem='free -mot'
+alias sp='du -chs --apparent-size'
+alias ht='htop -u user --sort-key PERCENT_MEM'
+
+alias lsvm='~/Development/Virtualization/startVM.sh -l'
+alias startvm='~/Development/Virtualization/startVM.sh -x $1'
+alias viewvm='~/Development/Virtualization/startVM.sh -v $1'
+alias killvm='~/Development/Virtualization/startVM.sh -k $1'
+
+# alias pomodoro='cd ~/apps/tomighty ; ./run.sh ; cd -'
+
+alias sss='aptitude search'
+
+alias bsoaus='telnet wsbld174.austin.ibm.com 23'
+
+
+alias vtl.all='vtl_getlist "http://www.veetle.com/index.php/listing/index/all/views"'
+alias vtl.animation='vtl_getlist "http://www.veetle.com/index.php/listing/index/animation/views"'
+alias vtl.comedy='vtl_getlist "http://www.veetle.com/index.php/listing/index/comedy/views"'
+alias vtl.education='vtl_getlist "http://www.veetle.com/index.php/listing/index/education/views"'
+alias vtl.events='vtl_getlist "http://www.veetle.com/index.php/listing/index/events/views"'
+alias vtl.gaming='vtl_getlist "http://www.veetle.com/index.php/listing/index/gaming/views"'
+alias vtl.movies='vtl_getlist "http://www.veetle.com/index.php/listing/index/movies/views"'
+alias vtl.music='vtl_getlist "http://www.veetle.com/index.php/listing/index/music/views"'
+alias vtl.news='vtl_getlist "http://www.veetle.com/index.php/listing/index/news/views"'
+alias vtl.religion='vtl_getlist "http://www.veetle.com/index.php/listing/index/religion/views"'
+alias vtl.sports='vtl_getlist "http://www.veetle.com/index.php/listing/index/sports/views"'
+alias vtl.tv='vtl_getlist "http://www.veetle.com/index.php/listing/index/TV/views"' 
