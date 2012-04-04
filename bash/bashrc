@@ -139,23 +139,23 @@ export HISTCONTROL=ignoredups					#Rm Dupes, the continuous repeated entry from 
 export HISTFILESIZE=3000					#Bash history size limit
 export HISTTIMEFORMAT="%d/%m/%y %T "				#History list shows digital time and date
 
-export ANDROID_HOME=/home/hendrix/Development/SDKs/android-sdk-linux
-export M2_REPO=/home/hendrix/.m2/repository
+export ANDROID_HOME=~/Development/SDKs/android-sdk-linux
+export M2_REPO=~/.m2/repository
 export ECLIPSE_HOME=/opt/eclipse
 
 # WCG Development
 export ANT_HOME=/opt/mantis
 
 # The following three lines have been added by UDB DB2.
-if [ -f /home/hendrix/sqllib/db2profile ]; then
-    . /home/hendrix/sqllib/db2profile
+if [ -f ~/sqllib/db2profile ]; then
+    . ~/sqllib/db2profile
 fi
 
 
 
 # The following three lines have been added by UDB DB2.
-if [ -f /home/hendrix/das/dasprofile ]; then
-    . /home/hendrix/das/dasprofile
+if [ -f ~/das/dasprofile ]; then
+    . ~/das/dasprofile
 fi
 
 
