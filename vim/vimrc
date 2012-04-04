@@ -132,10 +132,10 @@ map F :let &fen = !&fen<CR>
 "  set gf (go to file) and gc (go to class)"
 """"""""""""""""""""""""""""""""""""""""""""
 set path+=.,
-set path+=/home/hendrix/workspace/WASX/eclipse/grid.pgc.common/src/**,
-set path+=/home/hendrix/workspace/WASX/eclipse/grid.pgc.runtime/src/**,
-set path+=/home/hendrix/workspace/WASX/eclipse/grid.pgc.samples/src/**,
-set path+=/home/hendrix/workspace/WASX/eclipse/grid.pgc.was/src/**,
+set path+=~/workspace/WASX/eclipse/grid.pgc.common/src/**,
+set path+=~/workspace/WASX/eclipse/grid.pgc.runtime/src/**,
+set path+=~/workspace/WASX/eclipse/grid.pgc.samples/src/**,
+set path+=~/workspace/WASX/eclipse/grid.pgc.was/src/**,
 
 autocmd BufRead *.java set include=^#\s*import 
 autocmd BufRead *.java set includeexpr=substitute(v:fname,'\\.','/','g')
