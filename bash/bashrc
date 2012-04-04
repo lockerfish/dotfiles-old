@@ -149,9 +149,6 @@ export ANDROID_HOME=/home/hendrix/Development/SDKs/android-sdk-linux
 export M2_REPO=/home/hendrix/.m2/repository
 export ECLIPSE_HOME=/opt/eclipse
 
-# zWAS systems
-export ZWASA047=USER83@zwasa047.rtp.raleigh.ibm.com
-
 # WCG Development
 export ANT_HOME=/opt/mantis
 
