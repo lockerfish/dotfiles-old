@@ -123,12 +123,6 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
 fi
 
 
-
-
-
-
-
-
 # export
 export EDITOR=vim
 export VISUAL=vim
