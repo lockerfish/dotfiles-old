@@ -47,7 +47,7 @@ set hidden
 "set t_Co=256
 set ts=4 sts=4 sw=4 noexpandtab
 set listchars=tab:▸\ ,eol:¬ " Use the same symbols as TextMate for tabstops and EOLs
-set path+=., " set gf (go to file) and gc (go to class)
+"set path+=., " set gf (go to file) and gc (go to class)
 "set path+=~/workspace/WASX/eclipse/grid.pgc.common/src/**,
 "set path+=~/workspace/WASX/eclipse/grid.pgc.runtime/src/**,
 "set path+=~/workspace/WASX/eclipse/grid.pgc.samples/src/**,
@@ -56,6 +56,8 @@ set path+=., " set gf (go to file) and gc (go to class)
 " With a map leader it's possible to do extra key combinations
 let mapleader = ","
 let g:mapleader = ","
+
+let s:default_path = escape(&path, '\ ') " store default value of path
 
 " mapping keys
 map gf <C-W>f
@@ -72,6 +74,7 @@ map <leader>ew :e %%
 nmap <leader>q :q<cr>
 nmap <leader>l :set list!<CR> " Shortcut to rapidly toggle `set list`
 nmap <leader>w :w!<cr> " Fast saving
+nmap <leader>cd :cd %:p:h<CR> " change directory to the file being edited
 nmap <leader>nt :NERDTree<CR> " NERD Tree directory browser plugin
 nmap <leader>tl :TlistToggle<CR> " Tag List source browser plugin
 nmap <leader>mt <C-W>T " move window to new tab
@@ -105,7 +108,6 @@ map <c-s-tab> :tabprevious<cr>
 
 imap <c-s-tab> <esc>:tabprevious<cr>i
 
-
 noremap <F5> :make<CR>
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
@@ -135,6 +137,7 @@ if has("autocmd")
 	autocmd BufWritePost .vimrc source $MYVIMRC " auto source vimrc when save
 	autocmd! BufWritePost vimrc source ~/.vim/vimrc " When vimrc is edited, reload it
 	autocmd BufWritePre *.py,*.js,*.java :call <SID>StripTrailingWhitespaces() " clean trailing whitespaces on save
+	autocmd BufRead * let s:tempPath=escape(escape(expand("%:p:h"), ' '), '\ ') | exec "set path-=".s:tempPath | exec "set path-=".s:default_path | exec "set path^=".s:tempPath | exec "set path^=".s:default_path
 endif
 
 
