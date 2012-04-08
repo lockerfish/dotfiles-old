@@ -186,3 +186,7 @@ alias vtl.news='vtl_getlist "http://www.veetle.com/index.php/listing/index/news/
 alias vtl.religion='vtl_getlist "http://www.veetle.com/index.php/listing/index/religion/views"'
 alias vtl.sports='vtl_getlist "http://www.veetle.com/index.php/listing/index/sports/views"'
 alias vtl.tv='vtl_getlist "http://www.veetle.com/index.php/listing/index/TV/views"' 
+
+alias gitsis='git status --ignore-submodules=untracked'
+alias gitc='git commit -a'
+alias gits='git status'
