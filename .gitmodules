@@ -1,5 +1,3 @@
-jjjjjj
-	url = https://github.com/tpope/vim-fugitive.git
 [submodule "vim/bundle/git"]
 	path = vim/bundle/git
 	url = git://github.com/tpope/vim-git.git
@@ -30,3 +28,6 @@ jjjjjj
 [submodule "vim/bundle/vim_l9"]
 	path = vim/bundle/vim_l9
 	url = https://github.com/git-mirror/vim-l9.git
+[submodule "vim/bundle/fugitive"]
+	path = vim/bundle/fugitive
+	url = https://github.com/tpope/vim-fugitive.git
