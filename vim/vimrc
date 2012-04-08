@@ -1,53 +1,114 @@
+" vimrc
+" Hendrix Tavarez
+" @2012
+"
+"==============================================================
+" General settings
+"--------------------------------------------------------------
+
 "must be called before filetype plugin on ident on
 call pathogen#infect()
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
-set number
-set hidden
-set ts=4 sts=4 sw=4 noexpandtab
-
-"set t_Co=256
-colorscheme blackboard
-
-filetype plugin on 
+filetype plugin on
 filetype indent on
 
-  
-" Use the same symbols as TextMate for tabstops and EOLs
-set listchars=tab:▸\ ,eol:¬
+colorscheme molokai
 
 "Invisible character colors
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
 
-command! -nargs=* Stab call Stab()
+set history=700 " Sets how many lines of history VIM has to remember
+set autoread " Set to auto read when a file is changed from the outside
+set so=7 " Set 7 lines to the cursors - when moving vertical..
+set wildmenu "Turn on WiLd menu
+set wildchar=<Tab>
+set ruler "Always show current position
+set cmdheight=2 "The commandbar height
+set hid "Change buffer - without saving
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
+set ignorecase "Ignore case when searching
+set smartcase
+set hlsearch "Highlight search things
+set incsearch "Make search act like search in modern browsers
+set nolazyredraw "Don't redraw while executing macros 
+set magic "Set magic on, for regular expressions
+set showmatch "Show matching bracets when text indicator is over them
+set mat=2 "How many tenths of a second to blink
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500
+set number
+set hidden
+"set t_Co=256
+set ts=4 sts=4 sw=4 noexpandtab
+set listchars=tab:▸\ ,eol:¬ " Use the same symbols as TextMate for tabstops and EOLs
+set path+=., " set gf (go to file) and gc (go to class)
+"set path+=~/workspace/WASX/eclipse/grid.pgc.common/src/**,
+"set path+=~/workspace/WASX/eclipse/grid.pgc.runtime/src/**,
+"set path+=~/workspace/WASX/eclipse/grid.pgc.samples/src/**,
+"set path+=~/workspace/WASX/eclipse/grid.pgc.was/src/**,
 
-function! Stab()
-	let l:tabstop = 1 * input('set tabstop = softtabstop = shiftwidth = ')
-	if l:tabstop > 0
-		let &l:sts = l:tabstop
-		let &l:ts = l:tabstop
-		let &l:sw = l:tabstop
-	endif
-	call SummarizeTabs()
-endfunction
-						  
-function! SummarizeTabs()
-	try
-		echohl ModeMsg
-		echon 'tabstop='.&l:ts
-		echon ' shiftwidth='.&l:sw
-		echon ' softtabstop='.&l:sts
-		if &l:et
-			echon ' expandtab'
-		else
-			echon ' noexpandtab'
-		endif
-	finally
-		echohl None
-	endtry
-endfunction
+" With a map leader it's possible to do extra key combinations
+let mapleader = ","
+let g:mapleader = ","
+
+" mapping keys
+map gf <C-W>f
+map gc gdb<C-W>f
+
+
+" mapping <leader> key
+map <leader>e :e! ~/.vim/vimrc<cr> " Fast editing of the .vimrc
+map <leader>es :sp %%
+map <leader>et :tabe %%
+map <leader>ev :vsp %%
+map <leader>ew :e %%
+
+nmap <leader>q :q<cr>
+nmap <leader>l :set list!<CR> " Shortcut to rapidly toggle `set list`
+nmap <leader>w :w!<cr> " Fast saving
+nmap <leader>nt :NERDTree<CR> " NERD Tree directory browser plugin
+nmap <leader>tl :TlistToggle<CR> " Tag List source browser plugin
+nmap <leader>mru :MRU<CR> " Most Recent files plugin
+
+
+" mapping <Alt>
+
+nmap <A-[> <<
+nmap <A-]> >>
+
+vmap <A-[> <gv
+vmap <A-]> >gv
+
+
+" mapping <Ctl>
+map <C-[> <Esc>
+map <C-]> <C-W><C-]>:ts<CR>
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+map <c-t> :tabnew<cr>
+map <C-tab> :tabnext<cr>
+
+imap <C-t> <esc>:tabnew<cr>i
+imap <C-tab> <esc>:tabnext<cr>i
+
+" mapping <Ctl-Shift>
+map <c-s-tab> :tabprevious<cr>
+
+imap <c-s-tab> <esc>:tabprevious<cr>i
+
+
+noremap <F5> :make<CR>
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 if has("autocmd")
 	" Enable file type detection
@@ -62,14 +123,26 @@ if has("autocmd")
 	autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
 	autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
 	autocmd FileType java setlocal ts=4 sts=4 sw=4 noexpandtab
+	autocmd FileType java set tags=~/.java-ctags
+	autocmd FileType java set makeprg=mvn\ clean\ package\ %
 
-	" Treat .rss files as XML
-	autocmd BufNewFile,BufRead *.rss setfiletype xml
+	autocmd BufRead *.java set include=^#\s*import 
+	autocmd BufRead *.java set includeexpr=substitute(v:fname,'\\.','/','g')
+	"autocmd FileType java set efm=\ %#[javac]\ %#%f:%l:%c:%*\\d:%*\\d:\ %t%[%^:]%#:%m,\%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%#
+	"autocmd BufRead,BufNewFile **/WASX/**.java set makeprg=mantis\ -lib\ \"/opt/IBM/WebSphere8.5yy/AppServer/plugins/com.ibm.ws.batch.runtime.jar\"
+	autocmd BufNewFile,BufRead *.rss setfiletype xml " Treat .rss files as XML
+	autocmd BufWritePost .vimrc source $MYVIMRC " auto source vimrc when save
+	autocmd! BufWritePost vimrc source ~/.vim/vimrc " When vimrc is edited, reload it
+	autocmd BufWritePre *.py,*.js,*.java :call <SID>StripTrailingWhitespaces() " clean trailing whitespaces on save
 endif
 
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" functions
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 function! <SID>StripTrailingWhitespaces()
-	" Preparation: save last search, and cursor position.
+" Preparation: save last search, and cursor position.
 	let _s=@/
 	let l = line(".")
 	let c = col(".")
@@ -80,105 +153,4 @@ function! <SID>StripTrailingWhitespaces()
 	call cursor(l, c)
 endfunction
 
-" clean trailing whitespaces on save
-autocmd BufWritePre *.py,*.js,*.java :call <SID>StripTrailingWhitespaces()
 
-nmap <a-[> <<
-nmap <a-]> >>
-vmap <a-[> <gv
-vmap <a-]> >gv
-
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-
-map <c-tab> :tabnext<cr>
-imap <c-tab> <esc>:tabnext<cr>i
-map <c-s-tab> :tabprevious<cr>
-imap <c-s-tab> <esc>:tabprevious<cr>i
-map <c-t> :tabnew<cr>
-imap <c-t> <esc>:tabnew<cr>i
-
-cnoremap %% <C-R>=expand('%:h').'/'<cr>
-map <leader>ew :e %%
-map <leader>es :sp %%
-map <leader>ev :vsp %%
-map <leader>et :tabe %%
-
-" Shortcut to rapidly toggle `set list`
-nmap <leader>l :set list!<CR>
-
-
-
-" Java
-" http://everything101.sourceforge.net/docs/papers/java_and_vim.html
-
-" intra-file navigation
-
-""""""""""""""""""""""""""""""""""""""""""""
-"  Code Folding base on indentation        "
-""""""""""""""""""""""""""""""""""""""""""""
-set foldmethod=indent
-set foldlevel=1
-set foldnestmax=2
-set fillchars=stl:_,stlnc:-,vert:\|,fold:\ ,diff:-
-map F :let &fen = !&fen<CR>
-
-
-" inter-file navigation
-"
-""""""""""""""""""""""""""""""""""""""""""""
-"  set gf (go to file) and gc (go to class)"
-""""""""""""""""""""""""""""""""""""""""""""
-set path+=.,
-set path+=~/workspace/WASX/eclipse/grid.pgc.common/src/**,
-set path+=~/workspace/WASX/eclipse/grid.pgc.runtime/src/**,
-set path+=~/workspace/WASX/eclipse/grid.pgc.samples/src/**,
-set path+=~/workspace/WASX/eclipse/grid.pgc.was/src/**,
-
-autocmd BufRead *.java set include=^#\s*import 
-autocmd BufRead *.java set includeexpr=substitute(v:fname,'\\.','/','g')
-
-map gf <C-W>f
-map gc gdb<C-W>f
-
-
-""""""""""""""""""""""""""""""""""""""""""""
-"  tag jump support                        "
-""""""""""""""""""""""""""""""""""""""""""""
-" create tags file
-" first unzip $JAVA_HOME/src.zip into $JAVA_HOME/share then, run
-" ctags -R --language-force=java -f ~/.tags $JAVA_HOME/share
-autocmd FileType java set tags=~/.java-ctags
-" map key to open on split window
-map <C-]> <C-W><C-]>
-
-""""""""""""""""""""""""""""""""""""""""""""
-"  code complettion support                        "
-""""""""""""""""""""""""""""""""""""""""""""
-set complete=i,],.,b,w,t,k
-set dictionary=~/.vimKeywords
-
-function! My_TabComplete()
-	let substr = strpart(getline('.'), col('.'))
-	let result = match(substr, '\w\+\(\.\w*\)$')
-	if (result!=-1)
-		return "\<C-X>\<C-U>"
-	else
-		return "\<tab>"
-endfunction
-
-autocmd FileType java inoremap <tab> <C-R>=My_TabComplete()<CR>
-				  
-""""""""""""""""""""""""""""""""""""""""""""
-"  compiling source code                   "
-""""""""""""""""""""""""""""""""""""""""""""
-
-" Java
-au FileType java set makeprg=mvn\ clean\ package\ %
-au FileType java set efm=\ %#[javac]\ %#%f:%l:%c:%*\\d:%*\\d:\ %t%[%^:]%#:%m,\%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%#
-" special settings for WASX code
-au BufRead,BufNewFile **/WASX/**.java set makeprg=mantis\ -lib\ \"/opt/IBM/WebSphere8.5yy/AppServer/plugins/com.ibm.ws.batch.runtime.jar\"
-
-noremap <F5> :make<CR>
