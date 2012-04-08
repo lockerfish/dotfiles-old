@@ -74,6 +74,7 @@ nmap <leader>l :set list!<CR> " Shortcut to rapidly toggle `set list`
 nmap <leader>w :w!<cr> " Fast saving
 nmap <leader>nt :NERDTree<CR> " NERD Tree directory browser plugin
 nmap <leader>tl :TlistToggle<CR> " Tag List source browser plugin
+nmap <leader>mt <C-W>T " move window to new tab
 nmap <leader>mru :MRU<CR> " Most Recent files plugin
 
 
