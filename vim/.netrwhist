@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/home/hendrix/workspace/WASX/eclipse/grid.pgc.samples'
-let g:netrw_dirhist_2='/home/hendrix'
-let g:netrw_dirhist_3='/home/hendrix/.virsh'
-let g:netrw_dirhist_4='/home/hendrix'
-let g:netrw_dirhist_5='/home/hendrix/workspace/experimental/USPS/bin/com/eleven0eight/usps/service'
-let g:netrw_dirhist_6='/home/hendrix/workspace/experimental'
-let g:netrw_dirhist_7='/home/hendrix/workspace/experimental/SimpleTest'
