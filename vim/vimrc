@@ -77,6 +77,7 @@ nmap <leader>w :w!<cr> " Fast saving
 nmap <leader>cd :cd %:p:h<CR> " change directory to the file being edited
 nmap <leader>nt :NERDTree<CR> " NERD Tree directory browser plugin
 nmap <leader>tl :TlistToggle<CR> " Tag List source browser plugin
+nmap <leader>sa :sav<CR> " save as
 nmap <leader>mt <C-W>T " move window to new tab
 nmap <leader>mru :MRU<CR> " Most Recent files plugin
 
