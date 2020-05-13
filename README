@@ -1,22 +1,14 @@
 Installation:
 
-	git clone git://github.com/lockerfish/dotfiles.git 
+	git clone git://github.com/lockerfish/dotfiles.git ~/.dotfiles
 
-	cd dotfiles
-	git submodule init
-	git submodule update
-	
+Neovim
+	mkdir -p ~/.config
+  ln -s ~/.dotfiles/vim ~/.config/nvim
+
+Tmux
+	ln -s ~/.dotfiles/tmux/.tmux.conf ~/.tmux.conf
 
 
-Create symlinks:
-
-	ln -s ~/dotfiles/vim ~/.vim
-	ln -s ~/dotfiles/vim/vimrc ~/.vimrc
-	ln -s ~/dotfiles/vim/gvimrc ~/.gvimrc
-
-	ln -s ~/dotfiles/bash/bashrc ~/.bashrc
-	ln -s ~/dotfiles/bash/bash_aliases ~/.bash_aliases
-	ln -s ~/dotfiles/bash/bash_functions ~/.bash_functions
-
-	ln -s ~/dotfiles/ctags/java-ctags ~/.java-ctags
-
+sample dotfiles:
+https://github.com/wwwdata/vim-config
