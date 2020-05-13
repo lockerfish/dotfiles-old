@@ -18,10 +18,6 @@ nnoremap <leader>e :e ~/.config/nvim/init.vim<CR>
 " toggle fold
 " nnoremap <Tab> za
 
-" easy-align
-nmap ga <Plug>(EasyAlign)
-xmap ga <Plug>(EasyAlign)
-
 " quickfix mapping, nextfile jumps
 nnoremap <silent> <Up> :cprevious<CR>
 nnoremap <silent> <Down> :cnext<CR>
