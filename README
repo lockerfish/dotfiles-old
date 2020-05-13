@@ -2,6 +2,10 @@ Installation:
 
 	git clone git://github.com/lockerfish/dotfiles.git ~/.dotfiles
 
+Brew
+	brew tap Homebrew/bundle
+	cd ~/.dotfiles/brew && brew bundle
+
 Neovim
 	mkdir -p ~/.config
   ln -s ~/.dotfiles/vim ~/.config/nvim
