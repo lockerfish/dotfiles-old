@@ -64,3 +64,4 @@ source ~/.dotfiles/vim/plug/colorscheme.vim
 source ~/.dotfiles/vim/plug/airline.vim
 source ~/.dotfiles/vim/plug/dart.vim
 source ~/.dotfiles/vim/plug/multi_cursor.vim
+source ~/.dotfiles/vim/plug/a.vim
