@@ -18,6 +18,12 @@ nnoremap <leader>e :e ~/.config/nvim/init.vim<CR>
 " toggle fold
 " nnoremap <Tab> za
 
+" Tab
+"
+" new tab
+nnoremap <leader>t <Esc>:tabnew<CR>
+
+
 " quickfix mapping, nextfile jumps
 nnoremap <silent> <Up> :cprevious<CR>
 nnoremap <silent> <Down> :cnext<CR>
@@ -42,13 +48,9 @@ nmap <leader>se :UltiSnipsEdit<CR>
 "nnoremap <silent> <leader>pt :NERDTreeToggle<CR>   " open a horizontal split and switch to it (,h)
 nnoremap <silent> <leader>ff :NERDTreeFind<CR>   " open a horizontal split and switch to it (,h)
 "nnoremap <leader>pf :GitFiles<CR>
-nnoremap <leader>p/ :Rg 
+nnoremap <leader>/ :Rg 
 nnoremap <leader>h :History<CR>
 nnoremap <leader>c :Commands<CR>
-
-" window
-nnoremap <leader>wv <C-w>v<C-w>l   " split vertically
-nnoremap <leader>wh <C-w>s<C-w>j   " split horizontally
 
 " file
 nnoremap <leader>f :Files<CR>

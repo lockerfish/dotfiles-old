@@ -79,6 +79,7 @@ set nobackup
 set nowritebackup
 set noswapfile
 set pastetoggle=<F2>
+set nrformats+=alpha " increment or decrement alphabets characters using ctrl+a or ctrl+x 
 
 " italic comment highlight
 highlight Comment cterm=italic gui=italic
