@@ -13,6 +13,8 @@ Neovim
 Tmux
 	ln -s ~/.dotfiles/tmux/.tmux.conf ~/.tmux.conf
 
+Git
+	ln -s ~/.dotfiles/git/.gitignore ~/.gitignore
 
 sample dotfiles:
 https://github.com/wwwdata/vim-config
