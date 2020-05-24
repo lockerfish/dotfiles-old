@@ -4,8 +4,8 @@ set termguicolors
 set background=dark
 colo gruvbox
 
-let mapleader = ' '
-let maplocalleader = ' '
+let mapleader = ','
+let maplocalleader = ','
 
 " other interesting themes
 "baycomb
