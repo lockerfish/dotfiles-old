@@ -1,0 +1,13 @@
+# project note taking file for todo items, meeting notes and ideas
+TODO.md
+# test directory useful for trying things out 
+playground
+
+# OS-specific files
+.DS_Store
+.DS_Store?
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+

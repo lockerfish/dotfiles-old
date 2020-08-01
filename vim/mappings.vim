@@ -6,6 +6,9 @@ map .\ :call Uncomment()<CR>
 nmap <silent> <leader>d :!open dict://<cword><CR><CR>
 " command
 nnoremap ;; :
+"map! ii <esc>
+nnoremap ;' :q<cr>
+nnoremap ss :w<cr>
 
 " clear search results
 nnoremap <leader>sc :noh<cr>
@@ -23,6 +26,12 @@ nnoremap <leader>e :e ~/.config/nvim/init.vim<CR>
 " new tab
 nnoremap <leader>t <Esc>:tabnew<CR>
 
+" Flutter 
+"
+nnoremap <tab>t :!flutter test<cr>
+nnoremap <tab>a :!flutter analyze \| grep 'error'<cr>
+nnoremap <tab>p :!flutter pub upgrade<cr>
+nnoremap <tab>r :!flutter pub run build_runner build --delete-conflicting-outputs<cr>
 
 " quickfix mapping, nextfile jumps
 nnoremap <silent> <Up> :cprevious<CR>
@@ -49,6 +58,7 @@ nmap <leader>se :UltiSnipsEdit<CR>
 nnoremap <silent> <leader>ff :NERDTreeFind<CR>   " open a horizontal split and switch to it (,h)
 "nnoremap <leader>pf :GitFiles<CR>
 nnoremap <leader>/ :Rg 
+nnoremap <leader>p/ :CocSearch 
 nnoremap <leader>h :History<CR>
 nnoremap <leader>c :Commands<CR>
 

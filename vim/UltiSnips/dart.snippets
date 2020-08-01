@@ -343,8 +343,15 @@ snippet testFile "unit test file"
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-	test( '${1:test description}',() {
-		${2:}
+	group('${1:group description}',(){
+			test(
+				'${2:GIVEN x}'
+				' ${3:WHEN y}'
+				' ${4:AND z}'
+				' ${5:THEN result}',
+				() {
+			${6:}
+		});
 	});
 }
 endsnippet

@@ -50,7 +50,7 @@ set listchars+=trail:•              " BULLET (U+2022, UTF-8: E2 80 A2)
 set nojoinspaces                    " don't autoinsert two spaces after '.', '?', '!' for join command
 set hidden                          " allow buffer hiding without save
 
-set inccommand=split                " nice preview of search and replace actions
+"set inccommand=split                " nice preview of search and replace actions
 
 set showmatch                       " show matching brackets
 set hlsearch                        " highlight all search matches
@@ -83,3 +83,5 @@ set nrformats+=alpha " increment or decrement alphabets characters using ctrl+a 
 
 " italic comment highlight
 highlight Comment cterm=italic gui=italic
+
+let g:tagbar_ctags_bin = "/usr/local/bin/ctags"
