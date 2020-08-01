@@ -53,19 +53,7 @@ Plug 'vimwiki/vimwiki'
 " granular project configuration :AV
 Plug 'tpope/vim-projectionist'
 
-" class outline viewer
-"Plug 'majutsushi/tagbar'
-" Plug 'Shougo/denite.nvim'
-" Plug 'Shougo/echodoc.vim'
-" support for .editorconfig - consistent coding style
-"Plug 'editorconfig/editorconfig-vim'
-" web: support for expanding abbreviations similar to emmet ul>li*>span a
-"Plug 'mattn/emmet-vim'
-" configurable statusline / tabline 
-"Plug 'itchyny/lightline.vim'
-
 " Language
-"Plug 'thosakwe/vim-flutter'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'natebosch/dartlang-snippets'
 Plug 'stephpy/vim-yaml'
