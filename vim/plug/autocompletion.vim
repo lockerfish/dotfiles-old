@@ -64,11 +64,17 @@ set completeopt=noinsert,menuone,noselect,preview
 set shortmess+=c
 
 " c-j c-k for moving in snippet
-imap <c-u> <Plug>(ultisnips_expand)
+"imap <c-u> <Plug>(ultisnips_expand)
 " enter for snippet expand
 "inoremap <expr> <CR> (pumvisible() ? ncm2_ultisnips#expand_or("\<c-y>") : "\<CR>")
-let g:UltiSnipsExpandTrigger		= "<Plug>(ultisnips_expand)"
-let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
-let g:UltiSnipsRemoveSelectModeMappings = 0
+"let g:UltiSnipsExpandTrigger		= "<Plug>(ultisnips_expand)"
+"let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
+"let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
 "let g:UltiSnipsSnippetsDir="~/.dotfiles/vim/UltiSnips"
+let g:UltiSnipsSnippetsDir='~/.vim/ultisnips-snippets'
+let g:UltiSnipsSnippetDirectories=['ultisnips-snippets']
+let g:UltiSnipsExpandTrigger= "<tab>"
+let g:UltiSnipsJumpForwardTrigger	= "<tab>"
+let g:UltiSnipsJumpBackwardTrigger	= "<tab-b>"
+let g:UltiSnipsEditSplit="vertical"
+"let g:UltiSnipsRemoveSelectModeMappings = 0

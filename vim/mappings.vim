@@ -1,7 +1,3 @@
-" comment lines
-map ./ :call Comment()<CR>
-map .\ :call Uncomment()<CR>
-
 " using dictionary.app
 nmap <silent> <leader>d :!open dict://<cword><CR><CR>
 " command
@@ -11,7 +7,7 @@ nnoremap ;' :q<cr>
 nnoremap ss :w<cr>
 
 " clear search results
-nnoremap <leader>sc :noh<cr>
+nnoremap <silent> <leader><space> :noh<cr>
 
 " reload configuration
 nnoremap <leader>r :source ~/.config/nvim/init.vim<CR>
@@ -34,10 +30,10 @@ nnoremap <tab>p :!flutter pub upgrade<cr>
 nnoremap <tab>r :!flutter pub run build_runner build --delete-conflicting-outputs<cr>
 
 " quickfix mapping, nextfile jumps
-nnoremap <silent> <Up> :cprevious<CR>
-nnoremap <silent> <Down> :cnext<CR>
-nnoremap <silent> <Left> :cpfile<CR>
-nnoremap <silent> <Right> :cnfile<CR>
+"nnoremap <silent> <Up> :cprevious<CR>
+"nnoremap <silent> <Down> :cnext<CR>
+"nnoremap <silent> <Left> :cpfile<CR>
+"nnoremap <silent> <Right> :cnfile<CR>
 
 " Save
 inoremap <C-s> <C-O>:update<cr>
@@ -116,3 +112,15 @@ imap <c-x><c-k> <plug>(fzf-complete-word)
 inoremap <expr> <C-X><C-E> gitmoji#complete()
 
 nnoremap <C-p> :pc<CR>
+
+" Move single line * vim-unimpaired
+nmap <c-s-k> [e
+nmap <c-s-j> ]e
+"
+" Move multiple lines
+vmap <c-s-k> [egv
+vmap <c-s-j> ]egv
+
+" vim-sneak search
+map s <Plug>Sneak_s
+map S <Plug>Sneak_S

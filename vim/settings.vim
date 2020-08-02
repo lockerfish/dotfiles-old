@@ -2,22 +2,12 @@ scriptencoding utf-8
 
 set termguicolors
 set background=dark
-colo gruvbox
+colo onedark
 
 let mapleader = ','
 let maplocalleader = ','
 
-" other interesting themes
-"baycomb
-"bensday
-"blackboard
-"codeschool
-"darkburn
-"darkspectrum
-"native
-"railscasts
-
-syntax enable
+syntax on
 set laststatus=2                    " keep last status, useful for function signatures
 set noshowmode                      " don't display insert/normal/visual mode, we have a status line for that
 set ts=2                            " number of spaces for a tab
@@ -85,3 +75,14 @@ set nrformats+=alpha " increment or decrement alphabets characters using ctrl+a 
 highlight Comment cterm=italic gui=italic
 
 let g:tagbar_ctags_bin = "/usr/local/bin/ctags"
+
+let g:sneak#label = 1
+" case insensitive sneak
+let g:sneak#use_ic_scs = 1
+" immediately move to the next instance of search, if you move the cursor sneak is back to default behavior
+let g:sneak#s_next = 1
+"let g:sneak#prompt = '🕵'
+let g:sneak#prompt = '🔎 '
+" Change the colors
+highlight Sneak guifg=black guibg=#00C7DF ctermfg=black ctermbg=cyan
+highlight SneakScope guifg=red guibg=yellow ctermfg=red ctermbg=yellow

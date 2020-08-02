@@ -1,8 +1,5 @@
 call plug#begin('~/.dotfiles/vim/plugged')
 
-" Colorscheme
-Plug 'morhetz/gruvbox'
-
 " General
 "
 " Asynchronous Lint Engine - Lint while you type
@@ -52,6 +49,8 @@ Plug 'kshenoy/vim-signature'
 Plug 'vimwiki/vimwiki'
 " granular project configuration :AV
 Plug 'tpope/vim-projectionist'
+" jump to any location specified by two characters
+Plug 'justinmk/vim-sneak'
 
 " Language
 Plug 'dart-lang/dart-vim-plugin'
@@ -64,15 +63,11 @@ call plug#end()
 
 source ~/.dotfiles/vim/settings.vim
 source ~/.dotfiles/vim/mappings.vim
-source ~/.dotfiles/vim/functions.vim
 
 " Plugin settings
 source ~/.dotfiles/vim/plug/autocompletion.vim
 source ~/.dotfiles/vim/plug/prettier.vim
 source ~/.dotfiles/vim/plug/vimwiki.vim
-source ~/.dotfiles/vim/plug/grammarous.vim
 source ~/.dotfiles/vim/plug/colorscheme.vim
-source ~/.dotfiles/vim/plug/airline.vim
 source ~/.dotfiles/vim/plug/dart.vim
-source ~/.dotfiles/vim/plug/multi_cursor.vim
 source ~/.dotfiles/vim/plug/a.vim

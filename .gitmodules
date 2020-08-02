@@ -1,3 +1,6 @@
 [submodule "vim/vim/plugged/Ultisnips"]
 	path = vim/vim/plugged/Ultisnips
 	url = https://github.com/SirVer/ultisnips.git
+[submodule "vim/vim/plugged/vim-sneak"]
+	path = vim/vim/plugged/vim-sneak
+	url = https://github.com/justinmk/vim-sneak.git
