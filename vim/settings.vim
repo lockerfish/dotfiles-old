@@ -10,8 +10,9 @@ let maplocalleader = ','
 syntax on
 set laststatus=2                    " keep last status, useful for function signatures
 set noshowmode                      " don't display insert/normal/visual mode, we have a status line for that
-set ts=2                            " number of spaces for a tab
-set sw=2                            " number of spaces for auto indent
+set tabstop=2                            " number of spaces for a tab
+set expandtab
+set shiftwidth=2                            " number of spaces for auto indent
 set nu                              " print line numbers
 set lazyredraw                      " redraw after executing macro
 set noshowcmd                       " no extra info at end of command line

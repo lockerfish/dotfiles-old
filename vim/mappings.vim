@@ -14,6 +14,9 @@ nnoremap <leader>r :source ~/.config/nvim/init.vim<CR>
 " edit configuration
 nnoremap <leader>e :e ~/.config/nvim/init.vim<CR>
 
+" search stackoverflow
+nmap <leader>w :execute '!open "https://stackoverflow.com/search?q='.input('stackoverflow:').'"'<cr>  
+
 " toggle fold
 " nnoremap <Tab> za
 

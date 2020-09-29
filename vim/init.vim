@@ -30,6 +30,8 @@ Plug 'SirVer/Ultisnips'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+Plug 'plasticboy/vim-markdown'
+Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app & yarn install'}
 " Insert or delete brackets, parens, quotes in pairs
 Plug 'jiangmiao/auto-pairs'
 " surrounding keywords cs ds yss ysi
@@ -46,7 +48,7 @@ Plug 'tpope/vim-unimpaired'
 " toggle and display marks
 Plug 'kshenoy/vim-signature'
 " personal wiki
-Plug 'vimwiki/vimwiki'
+"Plug 'vimwiki/vimwiki'
 " granular project configuration :AV
 Plug 'tpope/vim-projectionist'
 " jump to any location specified by two characters
@@ -58,6 +60,8 @@ Plug 'natebosch/dartlang-snippets'
 Plug 'stephpy/vim-yaml'
 " syntax file and other settings for typescript
 Plug 'leafgarland/typescript-vim'
+" easy add dependencies to Dart and Flutter projects
+Plug 'f-person/pubspec-assist-nvim'
 
 call plug#end()
 
