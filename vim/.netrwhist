@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =6
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/Users/hendrix/Music'
 let g:netrw_dirhist_6='/Users/hendrix/Temp/asset_toast'
 let g:netrw_dirhist_5='/Users/hendrix/Temp/Traincube/RedditReader/app/src/main/java/com/lockerfish/redditreaderapp'
 let g:netrw_dirhist_4='/Users/hendrix/Temp/Traincube/RedditReader/app/src/main/java/com/lockerfish'
@@ -9,4 +10,3 @@ let g:netrw_dirhist_1='/Users/hendrix/Temp/Traincube/RedditReader/app/src/main'
 let g:netrw_dirhist_0='/Users/hendrix/Temp/Traincube/RedditReader/app/src'
 let g:netrw_dirhist_9='/Users/hendrix/Temp/Traincube/RedditReader/app'
 let g:netrw_dirhist_8='/Users/hendrix/Temp/Traincube/RedditReader'
-let g:netrw_dirhist_7='/Users/hendrix/Temp/TensorFlow'
