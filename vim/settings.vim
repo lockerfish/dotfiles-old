@@ -75,6 +75,10 @@ set nrformats+=alpha " increment or decrement alphabets characters using ctrl+a 
 " italic comment highlight
 highlight Comment cterm=italic gui=italic
 
+" python3
+"let g:python3_host_prog = "/user/bin/python3"
+let g:python3_host_prog = trim('/usr/local/bin/' . system('readlink /usr/local/bin/python3'))
+
 let g:tagbar_ctags_bin = "/usr/local/bin/ctags"
 
 let g:sneak#label = 1
