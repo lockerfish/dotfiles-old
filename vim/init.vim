@@ -32,6 +32,8 @@ Plug 'prettier/vim-prettier', {
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app & yarn install'}
+" Dim paragraphs above and below the active paragraphs
+Plug 'junegunn/limelight.vim'
 " Insert or delete brackets, parens, quotes in pairs
 Plug 'jiangmiao/auto-pairs'
 " surrounding keywords cs ds yss ysi
@@ -53,6 +55,8 @@ Plug 'kshenoy/vim-signature'
 Plug 'tpope/vim-projectionist'
 " jump to any location specified by two characters
 Plug 'justinmk/vim-sneak'
+" firestore highlighting
+Plug 'delphinus/vim-firestore' 
 
 " Language
 Plug 'dart-lang/dart-vim-plugin'

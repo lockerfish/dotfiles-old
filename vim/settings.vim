@@ -75,8 +75,11 @@ set nrformats+=alpha " increment or decrement alphabets characters using ctrl+a 
 " italic comment highlight
 highlight Comment cterm=italic gui=italic
 
-" python3
-"let g:python3_host_prog = "/user/bin/python3"
+" ruby
+let g:loaded_ruby_provider = 0
+
+" python
+let g:python_host_prog = trim('/usr/bin/' . system('readlink /usr/bin/python'))
 let g:python3_host_prog = trim('/usr/local/bin/' . system('readlink /usr/local/bin/python3'))
 
 let g:tagbar_ctags_bin = "/usr/local/bin/ctags"
@@ -91,3 +94,20 @@ let g:sneak#prompt = '🔎 '
 " Change the colors
 highlight Sneak guifg=black guibg=#00C7DF ctermfg=black ctermbg=cyan
 highlight SneakScope guifg=red guibg=yellow ctermfg=red ctermbg=yellow
+
+" .............................................................................
+" junegunn/limelight.vim
+" .............................................................................
+let g:limelight_conceal_ctermfg=244
+
+" .............................................................................
+" iamcco/markdown-preview.nvim
+" .............................................................................
+let g:mkdp_auto_close=0
+let g:mkdp_refresh_slow=1
+let g:mkdp_markdown_css='/Users/hendrix/.local/lib/github-markdown-css/github-markdown.css'
+
+" NERDTree
+let g:NERDTreeIgnore = ['^node_modules$']
+
+let g:prettier#config#single_quote = 'true'

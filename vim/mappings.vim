@@ -18,7 +18,7 @@ nnoremap <leader>e :e ~/.config/nvim/init.vim<CR>
 nmap <leader>w :execute '!open "https://stackoverflow.com/search?q='.input('stackoverflow:').'"'<cr>  
 
 " toggle fold
-" nnoremap <Tab> za
+nnoremap <Tab> za
 
 " Tab
 "
@@ -27,10 +27,16 @@ nnoremap <leader>t <Esc>:tabnew<CR>
 
 " Flutter 
 "
-nnoremap <tab>t :!flutter test<cr>
-nnoremap <tab>a :!flutter analyze \| grep 'error'<cr>
-nnoremap <tab>p :!flutter pub upgrade<cr>
-nnoremap <tab>r :!flutter pub run build_runner build --delete-conflicting-outputs<cr>
+nnoremap <tab>t :!flutter test --platform chrome<cr>
+"nnoremap <tab>a :!flutter analyze \| grep 'error'<cr>
+"nnoremap <tab>p :!flutter pub upgrade<cr>
+"nnoremap <tab>r :!flutter pub run build_runner build --delete-conflicting-outputs<cr>
+"nmap <silent> <F5>:CocCommand flutter.run --no-sound-null-safety -d Chrome<CR>
+nnoremap <silent> <leader>fr :CocCommand flutter.run --no-sound-null-safety -d Chrome<CR>
+nnoremap <silent> <leader>fl :CocCommand flutter.dev.openDevLog<CR>
+nnoremap <silent> <leader>fp :CocCommand flutter.dev.openProfiler<CR>
+"nnoremap <silent> <leader>fd :CocCommand flutter.dev.openDevToolsProfiler<CR>
+nnoremap <silent> <leader>fd :!flutter packages pub global activate devtools && flutter pub global run devtools<CR>
 
 " quickfix mapping, nextfile jumps
 "nnoremap <silent> <Up> :cprevious<CR>
@@ -55,6 +61,7 @@ nmap <leader>se :UltiSnipsEdit<CR>
 " project
 "nnoremap <silent> <leader>pt :NERDTreeToggle<CR>   " open a horizontal split and switch to it (,h)
 nnoremap <silent> <leader>ff :NERDTreeFind<CR>   " open a horizontal split and switch to it (,h)
+nnoremap <silent> <leader>fc :NERDTreeFind\|:q<CR>   " open a horizontal split and switch to it (,h)
 "nnoremap <leader>pf :GitFiles<CR>
 nnoremap <leader>/ :Rg 
 nnoremap <leader>p/ :CocSearch 
@@ -68,7 +75,7 @@ nnoremap <leader>ft :TagbarToggle<CR>
 " buffer
 nnoremap <Leader><Tab> :e#<CR> " switch to last buffer
 nnoremap <leader>bb :Buffers<CR>
-nnoremap <leader>bd :bdelete<CR>
+nnoremap <leader>bd :bp\|bd #<CR> " delete buffer and replace with previous
 nnoremap <leader>bn :bnext<CR>
 nnoremap <leader>bp :bprevious<CR>
 nnoremap <leader>bl :BLines<CR>
