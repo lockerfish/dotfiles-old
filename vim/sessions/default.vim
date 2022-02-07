@@ -2,16 +2,15 @@ let SessionLoad = 1
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
-cd ~/.dotfiles/vim/plugged/markdown-preview.nvim
+cd ~/Projects/business/rent_our_teslas/smartfleet
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +0 .git/config
+badd +142 ~/.dotfiles/vim/mappings.vim
 argglobal
 %argdel
-$argadd .git/config
-edit .git/config
+$argadd ~/.dotfiles/vim/mappings.vim
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -21,20 +20,16 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 argglobal
-setlocal fdm=indent
+enew
+file NERD_tree_1
+setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
 setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
-setlocal fen
-let s:l = 8 - ((7 * winheight(0) + 24) / 48)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-8
-normal! 0
+setlocal nofen
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

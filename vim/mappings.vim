@@ -32,7 +32,7 @@ nnoremap <tab>t :!flutter test --platform chrome<cr>
 "nnoremap <tab>p :!flutter pub upgrade<cr>
 "nnoremap <tab>r :!flutter pub run build_runner build --delete-conflicting-outputs<cr>
 "nmap <silent> <F5>:CocCommand flutter.run --no-sound-null-safety -d Chrome<CR>
-nnoremap <silent> <leader>fr :CocCommand flutter.run --no-sound-null-safety -d Chrome<CR>
+nnoremap <silent> <leader>fr :CocCommand flutter.run --dart-define=IK_FEATURE=operator -d Chrome<CR>
 nnoremap <silent> <leader>fl :CocCommand flutter.dev.openDevLog<CR>
 nnoremap <silent> <leader>fp :CocCommand flutter.dev.openProfiler<CR>
 "nnoremap <silent> <leader>fd :CocCommand flutter.dev.openDevToolsProfiler<CR>
@@ -134,3 +134,9 @@ vmap <c-s-j> ]egv
 " vim-sneak search
 map s <Plug>Sneak_s
 map S <Plug>Sneak_S
+
+" autocomplete
+inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<CR>"
+inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Down>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<Up>"

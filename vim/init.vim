@@ -66,6 +66,8 @@ Plug 'stephpy/vim-yaml'
 Plug 'leafgarland/typescript-vim'
 " easy add dependencies to Dart and Flutter projects
 Plug 'f-person/pubspec-assist-nvim'
+" productivity metrics, goals, leaderboards and automatic time tracking
+" Plug 'wakatime/vim-wakatime'
 
 call plug#end()
 
