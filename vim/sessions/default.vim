@@ -2,16 +2,19 @@ let SessionLoad = 1
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
-cd ~/.dotfiles
+cd ~/Projects/business/rent_our_teslas/smartfleet
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +0 .gitignore
+badd +6 test/smartfleet_test.dart
+badd +1 lib/smartfleet.dart
+badd +4 example/smartfleet_example.dart
+badd +17 lib/src/authentication.dart
 argglobal
 %argdel
-$argadd .gitignore
-edit .gitignore
+$argadd test/smartfleet_test.dart
+edit lib/src/authentication.dart
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -29,12 +32,14 @@ setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 2 - ((1 * winheight(0) + 23) / 46)
+7
+normal! zo
+let s:l = 20 - ((19 * winheight(0) + 23) / 46)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-2
-normal! 012|
+20
+normal! 059|
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

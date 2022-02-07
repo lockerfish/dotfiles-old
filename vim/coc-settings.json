@@ -140,7 +140,21 @@
 
   // clock
   "clock.enable": false,
-  "coc.preferences.extensionUpdateCheck": "never"
+  "coc.preferences.extensionUpdateCheck": "never",
 
   // languageserver
+  "languageserver": {
+    "dart": {
+      "command": "dart",
+      "args": [
+        "/Users/hendrix/Development/flutter/bin/cache/dart-sdk/bin/snapshots/analysis_server.dart.snapshot",
+        "--lsp",
+        "--client-id",
+        "vim",
+        "--client-version",
+        "coc.nvim"
+      ],
+      "filetypes": ["dart"]
+    }
+  }
 }
